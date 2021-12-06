@@ -35,4 +35,3 @@ def test(i: [int]) -> int:
 
 print(float('inf'))
 print(int(10 / -11))
-print(bin())

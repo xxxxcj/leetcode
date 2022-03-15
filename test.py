@@ -35,3 +35,7 @@ def test(i: [int]) -> int:
 
 print(float('inf'))
 print(int(10 / -11))
+
+print((197 >> 6) % 2)
+
+print(0|4)

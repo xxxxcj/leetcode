@@ -1,29 +1,22 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        gap = 2*numRows - 2 if 2*numRows - 2 > 0 else 1
-        ans = ""
-        tmp = 0
-        centre = []
-        s_len = len(s)
-        for i in range(numRows):
-            if 0 < i < numRows - 1:
-                for j in centre:
-                    if 0 < j - i < s_len:
-                        ans += s[j - i]
-                    if j + i < s_len:
-                        ans += s[j + i]
-            elif i == 0:
-                while tmp < len(s):
-                    ans += s[tmp]
-                    centre.append(tmp)
-                    tmp += gap
-                centre.append(tmp)
+        ans = ''
+        gap = max(1, 2*numRows - 2)
+        for row in range(numRows):
+            if row == 0 or row == numRows - 1:
+                i = row
+                while i < len(s):
+                    ans += s[i]
+                    i += gap
             else:
-                for j in centre:
-                    if j + i < s_len:
-                        ans += s[j + i]
+                i = row
+                while i < len(s):
+                    ans += s[i]
+                    if i + 2*(numRows - 1 - row) < len(s):
+                        ans += s[i + 2*(numRows - 1 - row)]
+                    i += gap
         return ans
 
 
-s = "PAYPALISHIRING"
-print(Solution().convert(s, 3))
+s = "A"
+print(Solution().convert(s, 1))
